@@ -7,8 +7,7 @@
 	{
 		"keys": ["super+alt+ctrl+left"],
 		"command": "set_layout",
-		"args":
-		{
+		"args": {
 			"cols": [0.0, 0.33, 1.0],
 			"rows": [0.0, 1.0],
 			"cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
@@ -17,8 +16,7 @@
 	{
 		"keys": ["super+alt+ctrl+right"],
 		"command": "set_layout",
-		"args":
-		{
+		"args": {
 			"cols": [0.0, 0.66, 1.0],
 			"rows": [0.0, 1.0],
 			"cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
@@ -27,5 +25,7 @@
 	{ "keys": ["alt+1"], "command": "move_to_group", "args": { "group": 0 } },
 	{ "keys": ["alt+2"], "command": "move_to_group", "args": { "group": 1 } },
 	{ "keys": ["alt+3"], "command": "move_to_group", "args": { "group": 2 } },
-	{ "keys": ["alt+4"], "command": "move_to_group", "args": { "group": 3 } }
+	{ "keys": ["alt+4"], "command": "move_to_group", "args": { "group": 3 } },
+	{"keys": ["super+shift+r"], "command": "reindent" , "args": {"single_line": false}},
+	{"keys": ["super+shift+a"], "command": "alignment" }
 ]
