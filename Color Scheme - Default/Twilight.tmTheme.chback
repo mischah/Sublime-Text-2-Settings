@@ -7,15 +7,7 @@
 	<key>name</key>
 	<string>Twilight</string>
 	<key>settings</key>
-	<array><dict><key>name</key><string>mon_color</string><key>scope</key><string>mcol_BEBEBEFF</string><key>settings</key><dict><key>background</key><string>#BEBEBEFF</string><key>caret</key><string>#000000FF</string><key>foreground</key><string>#000000FF</string></dict></dict>
-<dict><key>name</key><string>mon_color</string><key>scope</key><string>mcol_808080FF</string><key>settings</key><dict><key>background</key><string>#808080FF</string><key>caret</key><string>#000000FF</string><key>foreground</key><string>#000000FF</string></dict></dict>
-<dict><key>name</key><string>mon_color</string><key>scope</key><string>mcol_FFFFFFFF</string><key>settings</key><dict><key>background</key><string>#FFFFFFFF</string><key>caret</key><string>#000000FF</string><key>foreground</key><string>#000000FF</string></dict></dict>
-<dict><key>name</key><string>mon_color</string><key>scope</key><string>mcol_0166A9FF</string><key>settings</key><dict><key>background</key><string>#0166A9FF</string><key>caret</key><string>#FFFFFFFF</string><key>foreground</key><string>#FFFFFFFF</string></dict></dict>
-<dict><key>name</key><string>mon_color</string><key>scope</key><string>mcol_444444FF</string><key>settings</key><dict><key>background</key><string>#444444FF</string><key>caret</key><string>#FFFFFFFF</string><key>foreground</key><string>#FFFFFFFF</string></dict></dict>
-<dict><key>name</key><string>mon_color</string><key>scope</key><string>mcol_EFEFEFFF</string><key>settings</key><dict><key>background</key><string>#EFEFEFFF</string><key>caret</key><string>#000000FF</string><key>foreground</key><string>#000000FF</string></dict></dict>
-<dict><key>name</key><string>mon_color</string><key>scope</key><string>mcol_FFEEEFFF</string><key>settings</key><dict><key>background</key><string>#FFEEEFFF</string><key>caret</key><string>#000000FF</string><key>foreground</key><string>#000000FF</string></dict></dict>
-<dict><key>name</key><string>mon_color</string><key>scope</key><string>mcol_FFEEE2FF</string><key>settings</key><dict><key>background</key><string>#FFEEE2FF</string><key>caret</key><string>#000000FF</string><key>foreground</key><string>#000000FF</string></dict></dict>
-
+	<array>
 		<dict>
 			<key>settings</key>
 			<dict>
