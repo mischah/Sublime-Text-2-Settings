@@ -1,5 +1,7 @@
 {
-	"auto_upgrade_last_run": 1349202497,
+	// If packages should be automatically upgraded when ST2 starts
+	"auto_upgrade": false,
+	"auto_upgrade_last_run": 1349291898,
 	"installed_packages":
 	[
 		"AdvancedNewFile",
