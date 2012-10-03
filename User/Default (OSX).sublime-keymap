@@ -23,5 +23,9 @@
 			"rows": [0.0, 1.0],
 			"cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
 		}
-	}
+	},
+	{ "keys": ["alt+1"], "command": "move_to_group", "args": { "group": 0 } },
+	{ "keys": ["alt+2"], "command": "move_to_group", "args": { "group": 1 } },
+	{ "keys": ["alt+3"], "command": "move_to_group", "args": { "group": 2 } },
+	{ "keys": ["alt+4"], "command": "move_to_group", "args": { "group": 3 } }
 ]
