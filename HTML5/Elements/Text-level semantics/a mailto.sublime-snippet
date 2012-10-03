@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<a href="mailto:${1:joe@example.com}?subject=${2:feedback}" "$3">${3:email me}</a>$0]]></content>
+	<tabTrigger>a</tabTrigger>
+	<description>&lt;a href="mailto:"&gt; </description>
+	<scope>text.html</scope>
+</snippet>

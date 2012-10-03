@@ -1,0 +1,39 @@
+{
+    // Copy any modified settings to `User/zen-coding.sublime-settings`
+    // otherwise modifications will not survive updates.
+
+    // Will sublime.log_commands(True) and output Zen Specific debug info
+    "debug" : false,
+
+    // Disable specific contextual completions that aren't part of `zen proper`
+    "completions_blacklist": [
+        // "css_selectors",
+        // "css_property_values",
+        // "html_elements_attributes",
+        // "html_attributes_values",
+        // "css_properties"
+    ],
+
+    // Report some usage statistics
+    // (currently just platform/arch/version/bool(unicode in packages path) etc)
+    "zenarbitrage" : true,
+
+    // For those who just want `zen as you type`, disable completions entirely
+    "disable_completions": false,
+
+    // my_zen_settings declared here will be reloaded without restarting Sublime
+    "my_zen_settings" : {
+        "html": {
+            "abbreviations": {
+                "jq": "<script src='jquery.js' type='javascript'>",
+                "demo": "<div id=\"demo\"></div>"
+            }
+        },
+        "css": {
+            "filters": "html,css,fc",
+            "snippets": {
+                "c": "color:#${1:000000};"
+            }
+        }
+    }
+}

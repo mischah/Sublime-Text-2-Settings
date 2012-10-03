@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<canvas>
+	$1
+</canvas>$0]]></content>
+	<tabTrigger>canvas</tabTrigger>
+	<description>&lt;canvas&gt;</description>
+	<scope>text.html</scope>
+</snippet>

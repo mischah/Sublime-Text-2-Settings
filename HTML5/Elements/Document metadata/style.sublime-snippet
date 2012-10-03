@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<style${1:${2: type="text/css"}${3: media="${4:screen}"}}>
+	$5
+</style>$0]]></content>
+	<tabTrigger>style</tabTrigger>
+	<description>&lt;style&gt;</description>
+	<scope>text.html</scope>
+</snippet>

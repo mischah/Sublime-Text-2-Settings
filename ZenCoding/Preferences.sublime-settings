@@ -1,0 +1,15 @@
+{
+    // ---------------------------  README -----------------------------------
+    //  Copy these key/values to User/Preferences.sublime-settings
+    //  They have NO effect here
+
+    // Yeah, one day we'll merge these into the zen-coding.sublime-settings
+
+    // If `true` will disable bindings like ctrl+alt+n etc
+    // Handy for our italian friends :)
+    "alt_gr"        : false,
+
+    // If `true` will insert id="$1" snippet on pressing '#', similar on '.'
+    // Useful for `raw html`, but annoying for some templating langs.
+    "auto_id_class" : false
+}

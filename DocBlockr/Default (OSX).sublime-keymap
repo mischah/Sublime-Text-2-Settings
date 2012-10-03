@@ -1,0 +1,17 @@
+[
+  { "keys": ["super+j"], "command": "jsdocs_join", "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "comment.block" }
+    ]
+  },
+  { "keys": ["super+j"], "command": "jsdocs_join", "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "comment.line" }
+    ]
+  },
+  { "keys": ["super+alt+q"], "command": "jsdocs_wrap_lines",
+    "context": [
+      { "key": "selector", "operator": "equal", "operand": "comment.block", "match_all": true }
+    ]
+  }
+]

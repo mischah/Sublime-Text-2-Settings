@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<ol$1>
+	<li>$2</li>$3
+</ol>$0]]></content>
+	<tabTrigger>ol</tabTrigger>
+	<description>&lt;ol&gt;</description>
+	<scope>text.html</scope>
+</snippet>

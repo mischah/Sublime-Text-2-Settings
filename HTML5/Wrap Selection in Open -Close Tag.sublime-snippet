@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<${1:p}>$SELECTION</${1/\s.*//}>]]></content>
+	<tabTrigger>^W</tabTrigger>
+	<description>Wrap Selection in Open/Close Tag</description>
+</snippet>

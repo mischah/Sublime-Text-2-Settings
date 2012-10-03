@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+/*
+* Self calling anonymous function to make of use the \$ shortcut
+* Even when using jQuery.noConflict();
+*/
+(function (\$) {
+
+		// Short form of \$(document).ready();
+	\$(function () {
+		${1:// Code goes here  …}
+	});
+	${2}
+}(jQuery));
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>jqueryWrapper</tabTrigger>
+	<description>jQuery wrapper function</description>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

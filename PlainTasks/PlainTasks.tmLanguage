@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>todo</string>
+		<string>tasks</string>
+	</array>
+	<key>keyEquivalent</key>
+	<string>^~T</string>
+	<key>name</key>
+	<string>Tasks</string>
+	<key>patterns</key>
+	<array>
+
+		<dict>
+			<key>match</key>
+			<string>^\s*(\w+.+:\s*$\n?)</string>
+			<key>name</key>
+			<string>keyword.control.header.todo</string>
+		</dict>
+
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.bullet.completed.todo</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.completed.todo</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(\+|✓|✔|☑)\s+((?:[^\@]|(?&lt;!\s)\@|\@(?=\s))*)</string>
+			<key>name</key>
+			<string>meta.item.todo.completed</string>
+		</dict>
+
+		<dict>
+		  <key>match</key>
+		  <string>^\s*((?!-|\+|✓|✔|❍|❑|■|□|☐|▪|▫|–|—|＿)\S).*((?!:\s*).\s*)$</string>
+		  <key>name</key>
+		  <string>notes.todo</string>
+		</dict>
+
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.bullet.pending.todo</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>text.pending.todo</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(-|❍|❑|■|□|☐|▪|▫|–|—)\s+((?:[^\@]|(?&lt;!\s)\@)*)</string>
+			<key>name</key>
+			<string>meta.item.todo.pending</string>
+		</dict>
+
+		<dict>
+			<key>match</key>
+			<string>(?&lt;=\s)(\@[\w\d\.\-!?]+\s+)*(\@done)[\(\)\d\w,\.:\-/\s]*\s*\n</string>
+			<key>name</key>
+			<string>meta.tag.todo.completed</string>
+		</dict>
+
+		<dict>
+			<key>match</key>
+			<string>(?&lt;=\s)\@(?!today|completed|done)[\w\d\.\(\)\-!?]+\s*</string>
+			<key>name</key>
+			<string>meta.tag.todo</string>
+		</dict>
+
+		<dict>
+			<key>match</key>
+			<string>^＿+$</string>
+			<key>name</key>
+			<string>meta.punctuation.archive.todo</string>
+		</dict>
+
+		<dict>
+			<key>match</key>
+			<string>^\s*---.{3,5}---+$</string>
+			<key>name</key>
+			<string>meta.punctuation.separator.todo</string>
+		</dict>
+
+		<dict>
+			<key>match</key>
+			<string>(?&lt;=\s)\@today|✭ᴛᴏᴅᴀʏ</string>
+			<key>name</key>
+			<string>string.other.tag.todo.today</string>
+		</dict>
+
+	</array>
+	<key>scopeName</key>
+	<string>text.todo</string>
+	<key>uuid</key>
+	<string>8fj2g29c-04ef-4330-9a6b-9b99aae1c418</string>
+</dict>
+</plist>

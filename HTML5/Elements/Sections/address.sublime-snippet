@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<address>
+	$1
+</address>$0]]></content>
+	<tabTrigger>address</tabTrigger>
+	<description>&lt;address&gt;</description>
+	<scope>text.html</scope>
+</snippet>

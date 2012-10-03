@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<aside>
+	$1
+</aside>$0]]></content>
+	<tabTrigger>aside</tabTrigger>
+	<description>&lt;aside&gt;</description>
+	<scope>text.html</scope>
+</snippet>

@@ -1,0 +1,104 @@
+[
+  {
+    "caption": "Zen Coding: Zen as you type"
+    , "command": "zen_as_you_type"
+  }
+  , {
+    "caption": "Zen Coding: Wrap zen as you type"
+    , "command": "wrap_zen_as_you_type"
+  }
+  , {
+    "caption": "Zen Coding: Endcode/decode base64"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "encode_decode_base64"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Evaluate math expression"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "evaluate_math_expression"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Select matching tag name"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "match_pair_tagname"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Go to matching tag"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "go_to_matching_pair"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Find and select tag pair"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "match_pair"
+      , "direction": "out"
+      , "syntax": null
+    }
+  }
+  , {
+    "caption": "Zen Coding: Select between tags"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "match_pair_inward"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Merge lines"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "merge_lines"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Move caret to next edit point"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "next_edit_point"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Move caret to previous edit point"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "prev_edit_point"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Delete tag"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "remove_tag"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Select next item"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "select_next_item"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Select previous item"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "select_previous_item"
+    }
+  }
+  , {
+    "caption": "Zen Coding: Split or join tag"
+    , "command": "run_zen_action"
+    , "args": {
+      "action": "split_join_tag"
+      , "profile_name": null
+    }
+  }
+]

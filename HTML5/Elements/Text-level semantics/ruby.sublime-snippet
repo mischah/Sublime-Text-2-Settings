@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<ruby>
+	${1:<rt>$2</rt>}
+</ruby>$0]]></content>
+	<tabTrigger>ruby</tabTrigger>
+	<description>&lt;ruby&gt;</description>
+	<scope>text.html</scope>
+</snippet>

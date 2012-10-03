@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<kbd>$1</kbd>%0]]></content>
+	<tabTrigger>kbd</tabTrigger>
+	<description>&lt;kbd&gt;</description>
+	<scope>text.html</scope>
+</snippet>

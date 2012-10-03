@@ -1,0 +1,86 @@
+TODO:
+ ☐ make links clickable and highlighted @feature
+ ☐ taskpaper compatibility @improvement
+ ☐ in archive list, prefix task with project name, add specific scope for project prefixes @feature
+ ☐ in archive list, add date in front of done tasks (e.g. 2012-09-06 14:41 Ξ some task) @feature
+ ☐ export to html/ preview in browser @feature
+ ☐ accept multiple bullet types at the same time @feature
+ ☐ @today ✭ᴛᴏᴅᴀʏ tags @feature
+ ☐ make gif animation @docs
+ ☐ say why it's called opinionated @docs
+ ☐ mouse interaction @feature
+ ☐ other themes?
+ ☐ done tag off by default?
+ ☐ indenting notes below tasks?
+ ☐ marking all nested tasks as done should mark the parent as done?
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+ ✔ add link to repo @documentation @done (12-09-23 11:36)
+ ✔ tags with () @bug @done (12-09-23 11:28)
+ ✔ can not make a new task on empty line @bug @important @done (12-09-23 11:26)
+ ✔ improved support for custom date format @done (Thursday September 20, 2012 11:41 PM)
+ ✔ removed the color of tags in done tasks @improvement @done (12-09-20 23:25)
+ ✔ png images for linux @done (12-09-20 22:58)
+ ✔ tags with dot can not be highlighted @bug @1.2 @done (12-09-20 22:58)
+ ✔ can not add multiple tags anymore! WTF! @bug @done (12-09-20 22:46)
+ ✔ adding ☑ to the complete_bullet list @done (12-09-20 22:29)
+ ✔ removed mouse interation for now @bug @done (12-09-19 23:39)
+ ✔ do not move the position of cursor when pressing cmd+D @improvement @done (12-09-18 22:05)
+ ✔ mouse click support to toggle a task state @feature @done (12-09-18 13:32)
+ ✔ write better readme @done (12-09-11 14:09)
+ ✔ make an empty line gap between arhived task @bug @done (12-09-11 10:37)
+ ✔ removed packages/tasks from settings and code @improvement @done (12-09-11 10:25)
+ ✔ open tutorial after install @improvement @done (12-09-18 13:28)
+ ✔ add to package manager @done (12-09-11 10:02)
+ ✔ rename to PlainTasks @done (12-09-10 23:45)
+ ✔ archiving with custom/none date format @bug @done (12-09-08 10:54)
+ ✔ archiving with done tag false @bug @done (12-09-08 10:54)
+ ✔ in archive list, make sure there's a line break at the end of list @improvement @done (12-09-08 10:42)
+ ✔ in archive list, indented task should be unindented @bug @done (12-09-08 08:25)
+ ✔ more tests on linux and windows @later @done (12-09-07 22:05)
+ ✔ tags should not be italic @bug @done (12-09-07 22:05)
+ ✔ make done tag optional @feature @done (12-09-07 15:54)
+ ✔ make date labling optional @feature @done (12-09-07 14:56)
+ ✔ now that date format is optional: just @done should be suffice @bug @done (12-09-07 14:56)
+ ✔ being able to work with done tasks with no @done and date at the end @improvement @done (12-09-07 14:56)
+ ✔ add ico format for windows @later @done (2012-09-06 15:02)
+ ✔ BUG: having single qoutes (') or > in task do not allow archiving @IMP @done (2012-09-06 14:22)
+ ✔ make date formating configurable @feature @done (2012-09-05 05:28)
+ ✔ notes + make them foldable @feature @done (2012-09-05 05:19)
+ ✔ add separator @feature @done (2012-09-05 05:11)
+ ✔ BUG: command+enter on project name line @IMP @done (2012-09-05 04:49)
+ ✔ add to settings menu @feature @done (2012-09-05 03:55)
+ ✔ always show the folding icons (or force to show folding icons) @improvement @done (2012-09-05 03:43)
+ ✔ refactor code @later @done (2012-09-05 03:26)
+ ✔ BUG: archiving when there is no done item cause an empty line on top of Archive section @done (2012-09-05 03:23)
+ ✔ BUG: repeating Archive put empty line sometimes @IMP @done (2012-09-05 03:22)
+ ✔ can not archive if there is no empty line at the end of todo list @IMP @done (2012-09-04 19:33)
+ ✔ fade the line above archive @done (2012-04-26 00:55)
+ ✔ publish custom icon files @done (2012-04-20 22:50)
+ ✔ use this full width low line (＿) for separator @done (2012-04-20 22:49)
+ ✔ temporary fold with -------------- @done (2012-04-15 20:36)
+ ✔ BUG: when no bullet detected after inseting bullet text should be deselected @done (2012-04-15 20:33)
+ ✔ BUG: foldable projects @alaki @fine @done (2012-04-15 20:06)
+ ✔ auto indent by one space to get folable projects @done (2012-04-15 20:05)
+ ✔ FEATURE: support tags @tag @important @something @done (2012-04-15 19:54)
+ ✔ Style normal tags @done (2012-04-15 19:54)
+ ✔ BUG: keybindings should only work in todo context @done (2012-04-15 15:05)
+ ✔ Platform Specific Settings @done (2012-03-29 09:17)
+ ✔ FEATURE: activate project lists for cmd+R @done (2012-03-29 00:04)
+ ✔ BUG: test it on windows (with default font and consolas) @done (2012-03-28 23:36)
+ ✔ BUG: add shortcut keys for other systems @done (2012-03-28 18:28)
+ ✔ BUG: include notebook.theme in the plugin @done (2012-03-28 00:08)
+ ✔ BUG: indent task to have project folding @done (2012-03-27 17:08)
+ ✔ escape bullet for regex to allow + @done (2012-03-27 17:05)
+ ✔ have both command+i and command+enter for new @done (2012-03-27 16:57)
+ ✔ have command+shift+A for archive @done (2012-03-27 16:57)
+ ✔ Archive done tasks at the end of the file make it fold by defalt @done (2012-03-27 01:01)
+ ✔ add archive section if it does not exists @done (2012-03-27 01:14)
+ ✔ TODO: make line bulleted if it's not on cmd+I (take care of done and indent) @done (2012-03-26 14:48)
+ ✔ TODO: customizeble bullets through settings @done (2012-03-25 20:57)
+ ✔ TODO: add emdash and endash to the list of bullets – — @done (2012-03-25 20:34)
+ ✔ TODO: add filetypes: .taskpaper , .tasks @done (2012-03-25 19:56)
+ ✔ TODO: Allow custom filetypese types to be added @done (2012-03-25 03:34)
+ ✔ TODO: Allow custom bullet punctuations @done (2012-03-25 11:10)
+ ✔ TODO: Respect indentations @done (2012-03-25 03:34)
