@@ -4,6 +4,10 @@
 		"command": "side_bar_open_in_browser" ,
 		"args":{"paths":[], "type":"testing"}
 	},
+	{ "keys": ["alt+ctrl+o"],
+		"command": "side_bar_open_in_browser",
+		"args":{"paths":[], "type":"production"}
+	},
 	{
 		"keys": ["super+alt+ctrl+left"],
 		"command": "set_layout",
