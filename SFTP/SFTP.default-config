@@ -1,0 +1,42 @@
+{
+    // The tab key will cycle through the settings when first created
+    // Visit http://wbond.net/sublime_packages/sftp/settings for help
+    
+    // sftp, ftp or ftps
+    "type": "${1:sftp}",
+
+    "save_before_upload": ${2:true},
+    "upload_on_save": ${3:false},
+    "sync_down_on_open": ${4:false},
+    "sync_skip_deletes": ${5:false},
+    "confirm_downloads": ${6:false},
+    "confirm_sync": ${7:true},
+    "confirm_overwrite_newer": ${8:false},
+    
+    "host": "${9:example.com}",
+    "user": "${10:username}",
+    ${11://}"password": "${12:password}",
+    ${13://}"port": "${14:22}",
+    
+    "remote_path": "${15:/example/path/}",
+    "ignore_regexes": [${16:
+        "\\\.sublime-(project|workspace)", "sftp-config(-alt\\\d?)?\\\.json",
+        "sftp-settings\\\.json", "/venv/", "\\\.svn", "\\\.hg", "\\\.git",
+        "\\\.bzr", "_darcs", "CVS", "\\\.DS_Store", "Thumbs\\\.db", "desktop\\\.ini"
+    }],
+    ${17://}"file_permissions": "${18:664}",
+    ${19://}"dir_permissions": "${20:775}",
+    
+    ${21://}"extra_list_connections": ${22:0},
+
+    "connect_timeout": ${23:30},
+    ${24://}"keepalive": ${25:120},
+    ${26://}"ftp_passive_mode": ${27:true},
+    ${28://}"ssh_key_file": "${29:~/.ssh/id_rsa}",
+    ${30://}"sftp_flags": [${31:"-F", "/path/to/ssh_config"}],
+    
+    ${32://}"preserve_modification_times": ${33:false},
+    ${34://}"remote_time_offset_in_hours": ${35:0},
+    ${36://}"remote_encoding": "${37:utf-8}",
+    ${38://}"remote_locale": "${39:C}",
+}
