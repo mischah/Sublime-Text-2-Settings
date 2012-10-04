@@ -68,6 +68,8 @@
 	"word_wrap": "auto",
 	"wrap_width": 107,
 	// Set to true to automatically save files when switching to a different file
-    // or application
-    "save_on_focus_lost": false
+	// or application
+	"save_on_focus_lost": false,
+	"theme": "Soda Light.sublime-theme",
+	"soda_classic_tabs": true
 }
