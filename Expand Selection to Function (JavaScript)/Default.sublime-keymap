@@ -1,0 +1,4 @@
+[
+	{ "keys": ["alt+up"], "command": "expand_selection_to_function_javascript" },
+	{ "keys": ["alt+down"], "command": "contract_selection" }
+]
