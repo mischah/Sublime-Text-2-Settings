@@ -4,5 +4,5 @@ console.trace();
 ]]></content>
 	<tabTrigger>console</tabTrigger>
 	<description>console.trace()</description>
-	<scope>source.js</scope>
+	<scope>source.js, source.coffee</scope>
 </snippet>

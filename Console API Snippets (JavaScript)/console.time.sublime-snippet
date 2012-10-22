@@ -6,5 +6,5 @@ console.timeEnd('${3:Timer Title}');
 ]]></content>
 	<tabTrigger>console</tabTrigger>
 	<description>console.time()</description>
-	<scope>source.js</scope>
+	<scope>source.js, source.coffee</scope>
 </snippet>
