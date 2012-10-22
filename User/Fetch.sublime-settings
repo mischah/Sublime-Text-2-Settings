@@ -1,10 +1,11 @@
 {
 	"files":
 	{
-		"jquery": "http://code.jquery.com/jquery.min.js"
+		"Lates jQuery (minified)": "http://code.jquery.com/jquery.min.js"
 	},
 	"packages":
 	{
-		"html5_boilerplate": "https://github.com/h5bp/html5-boilerplate/zipball/master"
+		"HTML5 Boilerplate": "https://github.com/h5bp/html5-boilerplate/zipball/master",
+		"reveal.js": "https://github.com/hakimel/reveal.js/zipball/master"
 	}
 }
