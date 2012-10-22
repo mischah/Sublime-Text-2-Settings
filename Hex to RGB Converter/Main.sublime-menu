@@ -1,0 +1,15 @@
+[
+    {
+        "id": "edit",
+        "children":
+        [
+            {
+                "id": "hextorgb"
+            },
+            {
+                "command": "hex_to_rgb",
+                "caption": "Convert Hex to RGB"
+            }
+        ]
+    }
+]
