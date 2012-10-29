@@ -32,5 +32,6 @@
 	{ "keys": ["alt+4"], "command": "move_to_group", "args": { "group": 3 } },
 	{"keys": ["super+shift+r"], "command": "reindent" , "args": {"single_line": false}},
 	{"keys": ["super+shift+a"], "command": "alignment" },
-	{"keys": ["ctrl+alt+b"], "command": "js_format"}
+	{"keys": ["ctrl+alt+b"], "command": "js_format"},
+	{ "keys": ["super+shift+r"], "command": "require_node" }
 ]
