@@ -48,7 +48,8 @@
 		"Scala",
 		"TCL",
 		"Textile",
-		"YAML"
+		"YAML",
+		"Color Highlighter"
 	],
 	"margin": 2,
 	"match_brackets": true,
