@@ -1,0 +1,4 @@
+[
+	{ "keys": ["ctrl+u", "ctrl+e"], "command": "urlencode" },
+	{ "keys": ["ctrl+u", "ctrl+d"], "command": "urldecode" }	
+]
