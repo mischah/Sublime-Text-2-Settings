@@ -1,0 +1,4 @@
+[
+	{ "keys": ["super+u", "super+e"], "command": "urlencode" },
+	{ "keys": ["super+u", "super+d"], "command": "urldecode" }	
+]

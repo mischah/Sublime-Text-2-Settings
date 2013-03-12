@@ -1,0 +1,24 @@
+[
+    {
+        "id": "selection",
+        "caption": "Selection",
+        "children":
+        [
+            {
+                "id": "format",
+                "caption": "Format",
+                "children":
+                [
+                    {
+                        "caption": "URL Encode",
+                        "command": "urlencode"
+                    },
+                    {
+                        "caption": "URL Decode",
+                        "command": "urldecode"
+                    }
+                ]
+            }
+        ]
+    }
+]

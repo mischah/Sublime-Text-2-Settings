@@ -15,6 +15,7 @@
 		"Expand Selection to Quotes",
 		"Hex to RGB Converter",
 		"HTML5",
+		"Jade",
 		"jQuery",
 		"JsFormat",
 		"LESS",
@@ -23,10 +24,12 @@
 		"Placeholders",
 		"PlainTasks",
 		"Require Node.js Modules Helper",
+		"Sass",
 		"SFTP",
 		"SideBarEnhancements",
 		"Smart Title Case",
 		"Theme - Soda",
+		"URLEncode",
 		"ZenCoding"
 	]
 }

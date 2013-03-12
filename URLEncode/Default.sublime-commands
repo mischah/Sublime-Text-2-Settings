@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "URL Encode",
+        "command": "urlencode"
+    },
+   	{
+        "caption": "URL Decode",
+        "command": "urldecode"
+    }
+]
