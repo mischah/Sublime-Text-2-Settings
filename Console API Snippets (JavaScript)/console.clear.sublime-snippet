@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[
-console.clear();
-]]></content>
-	<tabTrigger>console</tabTrigger>
-	<description>console.clear()</description>
-	<scope>source.js, source.coffee</scope>
-</snippet>
