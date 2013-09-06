@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+<code class="language-css">${1:/* Your code here … */}</code>
+]]></content>
+	<tabTrigger>prism</tabTrigger>
+	<description><![CDATA[<code> - CSS]]></description>
+	<!-- <scope>source.html, source.php</scope>-->
+</snippet>

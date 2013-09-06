@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+<pre class="language-javascript">
+	<code>
+	${1:// Your code here …}
+	</code>
+</pre>
+]]></content>
+	<tabTrigger>prism</tabTrigger>
+	<description><![CDATA[<pre> – JavaScript]]></description>
+	<!-- <scope>source.html, source.php</scope>-->
+</snippet>

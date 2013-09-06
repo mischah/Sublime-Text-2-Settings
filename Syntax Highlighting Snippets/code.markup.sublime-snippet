@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+<code class="language-markup">${1:&lt;!-- Your code here … -->}</code>
+]]></content>
+	<tabTrigger>prism</tabTrigger>
+	<description><![CDATA[<code> – Markup]]></description>
+	<!-- <scope>source.html, source.php</scope>-->
+</snippet>
