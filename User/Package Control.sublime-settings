@@ -5,6 +5,7 @@
 	[
 		"AdvancedNewFile",
 		"Alignment",
+		"ApacheConf.tmLanguage",
 		"Autocomplete Javascript with Method Signature",
 		"BracketHighlighter",
 		"Color Highlighter",
@@ -25,6 +26,7 @@
 		"PlainTasks",
 		"Require Node.js Modules Helper",
 		"Sass",
+		"SCSS",
 		"SFTP",
 		"SideBarEnhancements",
 		"Smart Title Case",
