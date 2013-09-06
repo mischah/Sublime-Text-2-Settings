@@ -11,7 +11,7 @@
 	"ensure_newline_at_eof_on_save": true,
 	"fade_fold_buttons": false,
 	"font_face": "SourceCodePro-Regular",
-	"font_size": 14.0,
+	"font_size": 13,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
@@ -41,7 +41,6 @@
 		"OCaml",
 		"R",
 		"Rails",
-		"Ruby",
 		"Perl",
 		"RestructuredText",
 		"SQL",
@@ -61,16 +60,13 @@
 	[
 		80
 	],
+	"save_on_focus_lost": false,
 	"scroll_past_end": true,
 	"shift_tab_unindent": true,
 	"show_full_path": false,
+	"soda_classic_tabs": true,
 	"spell_check": false,
-	"trim_trailing_white_space_on_save": true,
-	"word_wrap": "auto",
-	//"wrap_width": 107,
-	// Set to true to automatically save files when switching to a different file
-	// or application
-	"save_on_focus_lost": false,
 	"theme": "Soda Light.sublime-theme",
-	"soda_classic_tabs": true
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": "auto"
 }
