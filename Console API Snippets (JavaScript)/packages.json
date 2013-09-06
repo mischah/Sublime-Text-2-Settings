@@ -1,0 +1,20 @@
+{
+	"schema_version": "1.2",
+	"packages": [
+		{
+			"name": "Console API Snippets (JavaScript)",
+			"description": "Snippets for using the Console API of Firebug or other web Inspector tools.",
+			"author": "Michael Kühnel",
+			"homepage": "http://mischah.github.com/Console-API-Snippets/",
+			"last_modified": "2012-11-22 18:45:00",
+			"platforms": {
+				"*": [
+					{
+						"version": "1.0.2",
+						"url": "https://nodeload.github.com/mischah/Console-API-Snippets/zipball/1.0.2"
+					}
+				]
+			}
+		}
+	]
+}

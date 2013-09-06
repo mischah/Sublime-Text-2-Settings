@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+console.count(${1:'Title:'});
+]]></content>
+	<tabTrigger>console</tabTrigger>
+	<description>console.count()</description>
+	<scope>source.js, source.coffee</scope>
+</snippet>

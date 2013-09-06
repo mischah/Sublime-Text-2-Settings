@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+console.exception(${1:errorObject}${2:, optionalVar});
+]]></content>
+	<tabTrigger>console</tabTrigger>
+	<description>console.exception()</description>
+	<scope>source.js, source.coffee</scope>
+</snippet>

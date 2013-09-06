@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+console.group('${1:Title}');
+	${2:// }console.log(${3:var1}${4:, var2});
+console.groupEnd();
+]]></content>
+	<tabTrigger>console</tabTrigger>
+	<description>console.group()</description>
+	<scope>source.js, source.coffee</scope>
+</snippet>

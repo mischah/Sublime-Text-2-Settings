@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+console.timeStamp('${1:name}');
+]]></content>
+	<tabTrigger>console</tabTrigger>
+	<description>console.timeStamp()</description>
+	<scope>source.js, source.coffee</scope>
+</snippet>

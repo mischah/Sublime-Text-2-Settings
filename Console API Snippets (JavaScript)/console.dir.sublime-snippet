@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+console.dir(${1:object});
+]]></content>
+	<tabTrigger>console</tabTrigger>
+	<description>console.dir()</description>
+	<scope>source.js, source.coffee</scope>
+</snippet>
