@@ -1,7 +1,0 @@
-<snippet>
-  <content><![CDATA[
---- ✄ -----------------------
-]]></content>
-  <tabTrigger>--</tabTrigger>
-  <scope>text.todo</scope>
-</snippet>
