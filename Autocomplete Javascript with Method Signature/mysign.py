@@ -45,9 +45,10 @@ class MySign:
 				method_file_location = method_obj.filename();
 				autocomplete_list.append((method_str_to_append + '\t' + method_file_location,method_str_to_append)) 
 		return autocomplete_list
-	def get_lang(self, filename):
-		if '.js' in filename:
-			return "javascript"
+
+
+def is_javascript_file(filename):
+	return '.js' in filename
 
 #
 # MySign Collector Thread
@@ -68,8 +69,11 @@ class MySignCollectorThread(threading.Thread):
 		for line in file_lines:
 			if "function" in line:
 				matches = re.search('(\w+)\s*[: | =]\s*function\s*\((.*)\)', line)
+				matches2 = re.search('function\s*(\w+)\s*\((.*)\)', line)
 				if matches != None and (len(matches.group(1)) < self.collector.MAX_FUNC_SIZE and len(matches.group(2)) < self.collector.MAX_FUNC_SIZE):
 					self.collector.addFunc(matches.group(1), matches.group(2), basename(file_name))
+				elif matches2 != None and (len(matches2.group(1)) < self.collector.MAX_FUNC_SIZE and len(matches2.group(2)) < self.collector.MAX_FUNC_SIZE):
+					self.collector.addFunc(matches2.group(1), matches2.group(2), basename(file_name))
 
 	#
 	# Get Javascript files paths
@@ -119,8 +123,7 @@ class MySignCollector(MySign, sublime_plugin.EventListener):
 	def on_query_completions(self, view, prefix, locations):
 		current_file = view.file_name()
 		completions = []
-		if self.get_lang(current_file) == 'javascript':
-			completions = self.get_autocomplete_list(prefix)
-			completions = list(set(completions))
+		if is_javascript_file(current_file):
+			return self.get_autocomplete_list(prefix)
 			completions.sort()
 		return (completions,sublime.INHIBIT_EXPLICIT_COMPLETIONS)
