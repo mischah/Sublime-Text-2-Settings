@@ -44,6 +44,8 @@ Or just download the package from [download page][download] here at github and c
 
 ![Screenshot](http://mischah.github.com/Console-API-Snippets/images/console.group.png)
 
+You could also wrap console.time() and console.timeEnd() around existing code by opening the command palette (cmd ⌘ + shift ⇧ + P) and begin to type »console.time« and choose »console.time() - Wrapper«.
+
 ##About the Console API
 
 You should have a look at »[Firebug and Logging][firebug_info]« to get an idea of how useful it is to know the different console methods. Or check the screencast »[Become a Javascript Console Power-User][screencast]« from Paul Irish.
@@ -114,5 +116,10 @@ Use it, change it, fork it, sell it. Do what you will, but please leave the auth
 
 - Fix typo in readme and github pages
 - Add screencast »Become a Javascript Console Power-User« to readme and github pages
+
+**Version 1.0.3 (09-08-2013)**
+
+- Add console.time wrapper which lets you wrap console.time statements around your selected code. Thanks to [Joe Maller](https://github.com/joemaller)
+
 
 

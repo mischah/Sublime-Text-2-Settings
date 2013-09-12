@@ -11,4 +11,7 @@ Version 1.0.2 (11-22-2012)
 - Fix typo in readme and github pages
 - Add screencast »Become a Javascript Console Power-User« to readme and github pages
 
+Version 1.0.3 (09-08-2013)
+- Add console.time wrapper which lets you wrap console.time statements around your selected code.
+
 See http://mischah.github.com/Console-API-Snippets for details.

@@ -6,12 +6,13 @@
 			"description": "Snippets for using the Console API of Firebug or other web Inspector tools.",
 			"author": "Michael Kühnel",
 			"homepage": "http://mischah.github.com/Console-API-Snippets/",
-			"last_modified": "2012-11-22 18:45:00",
+			"last_modified": "2013-09-08 09:33:00",
+			"readme": "https://raw.github.com/mischah/Console-API-Snippets/master/README.md",
 			"platforms": {
 				"*": [
 					{
-						"version": "1.0.2",
-						"url": "https://nodeload.github.com/mischah/Console-API-Snippets/zipball/1.0.2"
+						"version": "1.0.3",
+						"url": "https://github.com/mischah/Console-API-Snippets/zipball/1.0.3"
 					}
 				]
 			}
