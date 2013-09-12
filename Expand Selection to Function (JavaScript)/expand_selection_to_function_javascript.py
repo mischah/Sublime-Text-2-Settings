@@ -6,29 +6,38 @@ from sublime import Region
 __js_function_re__ = re.compile(r"""
 	# Anonymous function
 	(?:
-		function \s*	# function
-		\( [^\)]* \)	# (params)
+		function \s* # function
+		\( [^\)]* \) # (params)
 	)
 	|
 	# Anonymous function as propery.
 	(?:
-		[_$a-zA-Z0-9]+ \s* : \s*	# propertyName :
-		function \s*				# function
-		\( [^\)]* \)				# (params)
+		[_$a-zA-Z0-9]+ \s* : \s* # propertyName :
+		function \s*             # function
+		\( [^\)]* \)             # (params)
 	)
 	|
 	# Anonymous function as local variable.
 	(?:
-		var \s+ [_$a-zA-Z0-9]+ \s* = \s*	# var aName =
-		function \s*						# function
-		\( [^\)]* \)						# (params)
+		var \s+ [_$a-zA-Z0-9]+ \s* = \s* # var aName =
+		function \s*                     # function
+		\( [^\)]* \)                     # (params)
+	)
+	|
+	# Anonymous function as prototype method.
+	(?:
+		[_$a-zA-Z0-9]+\.         # ClassName.
+		prototype\.              # prototype.
+		[_$a-zA-Z0-9]+ \s* = \s* # methodName =
+		function \s*             # function
+		\( [^\)]* \)             # (params)
 	)
 	|
 	# Normal named functions
 	(?:
-		function \s*		# function
-		[_$a-zA-Z0-9]+ \s*	# aName
-		\( [^\)]* \)		# (params)
+		function \s*       # function
+		[_$a-zA-Z0-9]+ \s* # aName
+		\( [^\)]* \)       # (params)
 	)
 """, re.VERBOSE)
 
@@ -105,6 +114,9 @@ class ExpandSelectionToFunctionJavascript(JavaScriptTextCommand):
 
 	"""
 
+	def is_comment_at_point(self, point):
+		return self.view.score_selector(point, 'comment')
+
 	def find_previous(self, regex, from_point):
 		"""Walks backwards from a point until it finds a region that matches
 		the given regex.
@@ -122,7 +134,7 @@ class ExpandSelectionToFunctionJavascript(JavaScriptTextCommand):
 			text = self.view.substr(sublime.Region(a, b))
 			match = regex.match(text)
 
-			if match:
+			if match and not self.is_comment_at_point(a):
 				# A match, but will still check if there is a longer one.
 				last_match = match
 			elif last_match:
@@ -151,14 +163,14 @@ class ExpandSelectionToFunctionJavascript(JavaScriptTextCommand):
 		# Increase and decrease the depth based on { and }. Once at depth 0, we're balanced
 		depth = 1
 
-		for i in xrange(braces_start + 1, self.view.size()):
+		for i in range(braces_start + 1, self.view.size()):
 			char = self.view.substr(i)
 
 			# Short-circuit the scope check for "comment' since I assume it's
 			# relatively slow compared to the strcmp.
-			if char == '{' and not self.view.score_selector(i, 'comment'):
+			if char == '{' and not self.is_comment_at_point(i):
 				depth += 1
-			elif char == '}' and not self.view.score_selector(i, 'comment'):
+			elif char == '}' and not self.is_comment_at_point(i):
 				depth -= 1
 				if depth == 0:
 					return sublime.Region(braces_start, i + 1)

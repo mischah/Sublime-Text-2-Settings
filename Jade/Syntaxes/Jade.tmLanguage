@@ -11,33 +11,18 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>storage.control.import.include.jade</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>variable.control.import.include.jade</string>
-				</dict>
-			</dict>
+			<key>comment</key>
+			<string>Doctype declaration.</string>
 			<key>match</key>
-			<string>^\s*(include|yield|append|prepend|block( (append|prepend))?)\s+(.*)</string>
-			<key>name</key>
-			<string>meta.first-class.jade</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>^(!!!)(\s*[a-zA-Z0-9-_]+)?</string>
+			<string>^(!!!|doctype)(\s*[a-zA-Z0-9-_]+)?</string>
 			<key>name</key>
 			<string>comment.other.doctype.jade</string>
 		</dict>
 		<dict>
 			<key>begin</key>
 			<string>^(\s*)//-</string>
+			<key>comment</key>
+			<string>Unbuffered (jade-only) comments.</string>
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
@@ -46,6 +31,8 @@
 		<dict>
 			<key>begin</key>
 			<string>^(\s*)//</string>
+			<key>comment</key>
+			<string>Buffered (html) comments.</string>
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
@@ -61,8 +48,10 @@
 							<string>invalid.illegal.comment.comment.block.jade</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>Buffered comments inside buffered comments will generate invalid html.</string>
 					<key>match</key>
-					<string>^\s*(//)</string>
+					<string>^\s*(//)(?!-)</string>
 					<key>name</key>
 					<string>string.comment.buffered.block.jade</string>
 				</dict>
@@ -70,7 +59,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\s*)(script)</string>
+			<string>^(\s*)(script)(?=[.#(\s])</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>2</key>
@@ -79,15 +68,17 @@
 					<string>entity.name.tag.script.jade</string>
 				</dict>
 			</dict>
+			<key>comment</key>
+			<string>Script tag with JavaScript code.</string>
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
-			<string>script.jade</string>
+			<string>source.script.jade</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?=[(])</string>
+					<string>\G(?=\()</string>
 					<key>end</key>
 					<string>$</string>
 					<key>name</key>
@@ -97,6 +88,21 @@
 						<dict>
 							<key>include</key>
 							<string>#tag_attributes</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\G(?=[.#])</string>
+					<key>end</key>
+					<string>$</string>
+					<key>name</key>
+					<string>stuff.tag.script.jade</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#complete_tag</string>
 						</dict>
 					</array>
 				</dict>
@@ -108,7 +114,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\s*)(style)</string>
+			<string>^(\s*)(style)(?=[.#(\s])</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>2</key>
@@ -117,24 +123,41 @@
 					<string>entity.name.tag.script.jade</string>
 				</dict>
 			</dict>
+			<key>comment</key>
+			<string>Style tag with CSS code.</string>
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
-			<string>style.jade</string>
+			<string>source.style.jade</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?=[(])</string>
+					<string>\G(?=\()</string>
 					<key>end</key>
 					<string>$</string>
 					<key>name</key>
-					<string>stuff.tag.script.jade</string>
+					<string>stuff.tag.style.jade</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
 							<string>#tag_attributes</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\G(?=[.#])</string>
+					<key>end</key>
+					<string>$</string>
+					<key>name</key>
+					<string>stuff.tag.style.jade</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#complete_tag</string>
 						</dict>
 					</array>
 				</dict>
@@ -146,7 +169,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\s*):(markdown)$</string>
+			<string>^(\s*):(markdown)(?=\(|$)$</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>2</key>
@@ -163,13 +186,17 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#filter_args</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>text.html.markdown</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\s*):(sass)$</string>
+			<string>^(\s*):(sass)(?=\(|$)$</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>2</key>
@@ -181,9 +208,13 @@
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
-			<string>text.sass.filter.jade</string>
+			<string>source.sass.filter.jade</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#filter_args</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>source.sass</string>
@@ -192,7 +223,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\s*):(less)$</string>
+			<string>^(\s*):(less)(?=\(|$)$</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>2</key>
@@ -204,9 +235,13 @@
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
-			<string>text.less.filter.jade</string>
+			<string>source.less.filter.jade</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#filter_args</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>source.less</string>
@@ -215,7 +250,34 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\s*):(coffeescript)$</string>
+			<string>^(\s*):(stylus)(?=\(|$)$</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.name.stylus.filter.jade</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>^(?!(\1\s)|\s*$)</string>
+			<key>name</key>
+			<string>source.stylus.filter.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#filter_args</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.stylus</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\s*):(coffeescript)(?=\(|$)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>2</key>
@@ -227,9 +289,13 @@
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
-			<string>text.coffeescript.filter.jade</string>
+			<string>source.coffeescript.filter.jade</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#filter_args</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>source.coffee</string>
@@ -238,111 +304,53 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\s*):(\w+)$</string>
+			<string>^(\s*)((:(?=.))|(:$))</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>2</key>
+				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>constant.language.name.generic.filter.jade</string>
+					<string>invalid.illegal.empty.generic.filter.jade</string>
 				</dict>
 			</dict>
+			<key>comment</key>
+			<string>Generic Jade filter.</string>
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
 			<string>text.generic.filter.jade</string>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>^(\s*)((-\s)|(?i:[a-z0-9_]*\s+=))</string>
-			<key>end</key>
-			<string>$</string>
-			<key>name</key>
-			<string>javascript.embedded.jade</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>source.js</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>^\s*(mixin)\s+([\w-]+)\s*</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>storage.type.function.jade</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.jade</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>$</string>
-			<key>name</key>
-			<string>meta.mixin.jade</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(\()</string>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>constant.args.mixin.jade</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(\))</string>
-					<key>name</key>
-					<string>meta.args.mixin.jade</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>source.js</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>^\s*(for|if|else if|else|each|until|while|unless)(\s+|$)</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>storage.type.function.jade</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>$</string>
-			<key>name</key>
-			<string>meta.control.flow.jade</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>.</string>
+					<string>\G(?&lt;=:)(?=.)</string>
 					<key>end</key>
 					<string>$</string>
 					<key>name</key>
-					<string>js.embedded.control.flow.jade</string>
+					<string>name.generic.filter.jade</string>
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>match</key>
+							<string>\G\(</string>
+							<key>name</key>
+							<string>invalid.illegal.name.generic.filter.jade</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\w</string>
+							<key>name</key>
+							<string>constant.language.name.generic.filter.jade</string>
+						</dict>
+						<dict>
 							<key>include</key>
-							<string>source.js</string>
+							<string>#filter_args</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\W</string>
+							<key>name</key>
+							<string>invalid.illegal.name.generic.filter.jade</string>
 						</dict>
 					</array>
 				</dict>
@@ -350,7 +358,27 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^(\s+)(?=[a-z.#].*?\.$)</string>
+			<string>^(\s*)(?=[\w.#].*?\.$)(?=(?:(?:(?:(?:(?:#[\w-]+)|(?:\.[\w-]+))|(?:(?:[#!]\{[^}]*\})|(?:\w(?:(?:[\w:-]+[\w-])|(?:[\w-]*)))))(?:(?:#[\w-]+)|(?:\.[\w-]+)|(?:\((?:[^()\'\"]*(?:(?:\'(?:[^\']|(?:(?&lt;!\\)\\\'))*\')|(?:\"(?:[^\"]|(?:(?&lt;!\\)\\\"))*\")))*[^()]*\))*)*)(?:(?:(?::\s+)|(?&lt;=\)))(?:(?:(?:(?:#[\w-]+)|(?:\.[\w-]+))|(?:(?:[#!]\{[^}]*\})|(?:\w(?:(?:[\w:-]+[\w-])|(?:[\w-]*)))))(?:(?:#[\w-]+)|(?:\.[\w-]+)|(?:\((?:[^()\'\"]*(?:(?:\'(?:[^\']|(?:(?&lt;!\\)\\\'))*\')|(?:\"(?:[^\"]|(?:(?&lt;!\\)\\\"))*\")))*[^()]*\))*)*))*)\.$)(?:(?:(#[\w-]+)|(\.[\w-]+))|((?:[#!]\{[^}]*\})|(?:\w(?:(?:[\w:-]+[\w-])|(?:[\w-]*)))))</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.id.tag.jade</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>string.name.classes.tag.jade</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.jade</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Generated from dot_block_tag.py</string>
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
@@ -359,46 +387,8 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#complete_tag</string>
+					<string>#tag_attributes</string>
 				</dict>
-				<dict>
-					<key>begin</key>
-					<string>^(?=.)</string>
-					<key>end</key>
-					<string>$</string>
-					<key>name</key>
-					<string>text.block.jade</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#html_entity</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#interpolated_value</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>^([a-z#.])(?=.*?\.$)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.tag.name</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>^(?!\s|$)</string>
-			<key>name</key>
-			<string>text.block.dot.tag.jade</string>
-			<key>patterns</key>
-			<array>
 				<dict>
 					<key>include</key>
 					<string>#complete_tag</string>
@@ -412,6 +402,10 @@
 					<string>text.block.jade</string>
 					<key>patterns</key>
 					<array>
+						<dict>
+							<key>include</key>
+							<string>#embedded_html</string>
+						</dict>
 						<dict>
 							<key>include</key>
 							<string>#html_entity</string>
@@ -427,6 +421,8 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s*</string>
+			<key>comment</key>
+			<string>All constructs that generally span a single line starting with any number of white-spaces.</string>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
@@ -434,14 +430,40 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>include</key>
+					<string>#blocks_and_includes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#unbuffered_code</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#mixins</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#flow_control</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#case_conds</string>
+				</dict>
+				<dict>
 					<key>begin</key>
 					<string>\|</string>
+					<key>comment</key>
+					<string>Tag pipe text line.</string>
 					<key>end</key>
 					<string>$</string>
 					<key>name</key>
 					<string>text.block.pipe.jade</string>
 					<key>patterns</key>
 					<array>
+						<dict>
+							<key>include</key>
+							<string>#embedded_html</string>
+						</dict>
 						<dict>
 							<key>include</key>
 							<string>#html_entity</string>
@@ -457,30 +479,175 @@
 					<string>#printed_expression</string>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#complete_tag</string>
+					<key>begin</key>
+					<string>\G((?=&lt;)|[^\w.#]|(\.[^\w-]))|(#[^\{\w-])</string>
+					<key>comment</key>
+					<string>Line starting with characters incompatible with tag name/id/class is standalone text.</string>
+					<key>end</key>
+					<string>$</string>
+					<key>name</key>
+					<string>text.jade</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#embedded_html</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#html_entity</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#interpolated_value</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>.</string>
-					<key>name</key>
-					<string>invalid.illegal.tag.jade</string>
+					<key>include</key>
+					<string>#complete_tag</string>
 				</dict>
 			</array>
 		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>blocks_and_includes</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.import.include.jade</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>variable.control.import.include.jade</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Template blocks and includes.</string>
+			<key>match</key>
+			<string>(extends|include|yield|append|prepend|block( (append|prepend))?)\s+(.*)$</string>
+			<key>name</key>
+			<string>meta.first-class.jade</string>
+		</dict>
+		<key>case_conds</key>
+		<dict>
+			<key>begin</key>
+			<string>(default|when)((\s+|(?=:))|$)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.function.jade</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Jade case conditionals.</string>
+			<key>end</key>
+			<string>$</string>
+			<key>name</key>
+			<string>meta.control.flow.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\G(?!:)</string>
+					<key>end</key>
+					<string>(?=:\s+)|$</string>
+					<key>name</key>
+					<string>js.embedded.control.flow.jade</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#case_when_paren</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>source.js</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>:\s+</string>
+					<key>end</key>
+					<string>$</string>
+					<key>name</key>
+					<string>tag.case.control.flow.jade</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#complete_tag</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>case_when_paren</key>
+		<dict>
+			<key>begin</key>
+			<string>\(</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>name</key>
+			<string>js.when.control.flow.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#case_when_paren</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>:</string>
+					<key>name</key>
+					<string>invalid.illegal.name.tag.jade</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
+				</dict>
+			</array>
+		</dict>
 		<key>complete_tag</key>
 		<dict>
 			<key>begin</key>
-			<string>(?=[a-z.#])</string>
+			<string>(?=[\w.#])|(:\s*)</string>
 			<key>end</key>
-			<string>(?!:\s+)$</string>
+			<string>(\.?$)|(?=:.)</string>
 			<key>name</key>
 			<string>complete_tag.jade</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#blocks_and_includes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#unbuffered_code</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#mixins</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#flow_control</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=:)\w.*$</string>
+					<key>name</key>
+					<string>invalid.illegal.name.tag.jade</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#tag_name</string>
@@ -498,25 +665,21 @@
 					<string>#tag_attributes</string>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>(\.(?!$))|(:\s*([^\sa-z.#]|$))</string>
-					<key>name</key>
-					<string>invalid.illegal.end.tag.jade</string>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>:\s*</string>
-					<key>end</key>
-					<string>(?!:)$</string>
-					<key>name</key>
-					<string>subtag.complete_tag.jade</string>
-					<key>patterns</key>
-					<array>
+					<key>captures</key>
+					<dict>
+						<key>2</key>
 						<dict>
-							<key>include</key>
-							<string>#complete_tag</string>
+							<key>name</key>
+							<string>invalid.illegal.end.tag.jade</string>
 						</dict>
-					</array>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>invalid.illegal.end.tag.jade</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>((\.)\s+$)|((:)\s*$)</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -528,28 +691,154 @@
 				</dict>
 			</array>
 		</dict>
+		<key>embedded_html</key>
+		<dict>
+			<key>begin</key>
+			<string>(?=&lt;[^&gt;]*&gt;)</string>
+			<key>end</key>
+			<string>$|(?=&gt;)</string>
+			<key>name</key>
+			<string>html</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>text.html.basic</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#interpolated_value</string>
+				</dict>
+			</array>
+		</dict>
+		<key>filter_args</key>
+		<dict>
+			<key>begin</key>
+			<string>\G(\()</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>meta.args.filter.jade</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>invalid.illegal.extra.args.filter.jade</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\))(.*?$)</string>
+			<key>name</key>
+			<string>args.filter.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>([^\s(),=]+)(=?)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.other.attribute-name.tag.jade</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.key-value.jade</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>string.value.args.filter.jade</string>
+					<key>end</key>
+					<string>((?=\))|,|$)</string>
+					<key>name</key>
+					<string>attributes.tag.jade</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#filter_args_paren</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>filter_args_paren</key>
+		<dict>
+			<key>begin</key>
+			<string>\(</string>
+			<key>end</key>
+			<string>\)|$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#filter_args_paren</string>
+				</dict>
+			</array>
+		</dict>
+		<key>flow_control</key>
+		<dict>
+			<key>begin</key>
+			<string>(for|if|else if|else|each|until|while|unless|case)(\s+|$)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.function.jade</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Jade control flow.</string>
+			<key>end</key>
+			<string>$</string>
+			<key>name</key>
+			<string>meta.control.flow.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string></string>
+					<key>end</key>
+					<string>$</string>
+					<key>name</key>
+					<string>js.embedded.control.flow.jade</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>source.js</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
 		<key>html_entity</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>match</key>
-					<string>&amp;(?!((#\d+)|([a-z]\w+));)</string>
+					<string>(&amp;)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)</string>
 					<key>name</key>
-					<string>invalid.illegal.html_entity.text.jade</string>
+					<string>constant.character.entity.html.text.jade</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>&amp;((#\d+)|([a-z]\w+));</string>
+					<string>[&lt;&gt;&amp;]</string>
 					<key>name</key>
-					<string>constant.html_entity.text.jade</string>
+					<string>invalid.illegal.html_entity.text.jade</string>
 				</dict>
 			</array>
 		</dict>
 		<key>interpolated_value</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;!\\)[#!]\{</string>
+			<string>(?&lt;!\\)[#!]\{(?=.*?\})</string>
 			<key>end</key>
 			<string>\}</string>
 			<key>name</key>
@@ -557,15 +846,63 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>match</key>
+					<string>{</string>
+					<key>name</key>
+					<string>invalid.illegal.tag.jade</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>source.js</string>
+				</dict>
+			</array>
+		</dict>
+		<key>mixins</key>
+		<dict>
+			<key>begin</key>
+			<string>(((mixin\s+)|\+)([\w-]+))\s*</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.function.jade</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.jade</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Mixin declaration and use, including the new '+' syntax.</string>
+			<key>end</key>
+			<string>$</string>
+			<key>name</key>
+			<string>meta.mixin.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string></string>
+					<key>end</key>
+					<string>$</string>
+					<key>name</key>
+					<string>args.mixin.jade</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>source.js</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
 		<key>printed_expression</key>
 		<dict>
 			<key>begin</key>
-			<string>(!?=)\s*</string>
+			<string>(!?\=)\s*</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -595,8 +932,110 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>match</key>
+					<string>\\((x[0-9a-fA-F]{2})|(u[0-9]{4})|.)</string>
+					<key>name</key>
+					<string>constant.character.quoted.jade</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#interpolated_value</string>
+				</dict>
+			</array>
+		</dict>
+		<key>tag_attribute_value_braces</key>
+		<dict>
+			<key>begin</key>
+			<string>\{</string>
+			<key>end</key>
+			<string>\}</string>
+			<key>name</key>
+			<string>js.value.attribute.tag.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#tag_attribute_value_paren</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag_attribute_value_brackets</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag_attribute_value_braces</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
+				</dict>
+			</array>
+		</dict>
+		<key>tag_attribute_value_brackets</key>
+		<dict>
+			<key>begin</key>
+			<string>\[</string>
+			<key>end</key>
+			<string>\]</string>
+			<key>name</key>
+			<string>js.value.attribute.tag.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#tag_attribute_value_paren</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag_attribute_value_brackets</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag_attribute_value_braces</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
+				</dict>
+			</array>
+		</dict>
+		<key>tag_attribute_value_paren</key>
+		<dict>
+			<key>begin</key>
+			<string>\(</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>name</key>
+			<string>js.value.attribute.tag.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#tag_attribute_value_paren</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag_attribute_value_brackets</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag_attribute_value_braces</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
 				</dict>
 			</array>
 		</dict>
@@ -619,8 +1058,22 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.other.attribute-name.tag.jade</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>([^\s(),=]+)\s*((?=\))|,|$)</string>
+					<key>name</key>
+					<string>attribues.tag.jade</string>
+				</dict>
+				<dict>
 					<key>begin</key>
-					<string>([a-z]\w+)(=)</string>
+					<string>([^\s(),=]*[^\s(),=!])\s*(!?\=)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -635,11 +1088,23 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>,|(?=\))</string>
+					<string>((?=\))|,|$)</string>
 					<key>name</key>
 					<string>attributes.tag.jade</string>
 					<key>patterns</key>
 					<array>
+						<dict>
+							<key>include</key>
+							<string>#tag_attribute_value_paren</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#tag_attribute_value_brackets</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#tag_attribute_value_braces</string>
+						</dict>
 						<dict>
 							<key>include</key>
 							<string>#string</string>
@@ -654,32 +1119,50 @@
 		</dict>
 		<key>tag_classes</key>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>string.name.classes.tag.jade</string>
-				</dict>
-			</dict>
 			<key>match</key>
-			<string>\.([\w-]+)</string>
+			<string>\.[\w-]+</string>
 			<key>name</key>
-			<string>classes.tag.jade</string>
+			<string>string.name.classes.tag.jade</string>
 		</dict>
 		<key>tag_id</key>
 		<dict>
 			<key>match</key>
-			<string>#([a-z][\w-]*)</string>
+			<string>#[\w-]+</string>
 			<key>name</key>
 			<string>constant.id.tag.jade</string>
 		</dict>
 		<key>tag_name</key>
 		<dict>
-			<key>match</key>
-			<string>[a-z][a-z0-9_-]*</string>
+			<key>begin</key>
+			<string>([#!]\{(?=.*?\}))|(\w(([\w:-]+[\w-])|([\w-]*)))</string>
+			<key>end</key>
+			<string>(\G(?&lt;!\5[^\w-]))|\}|$</string>
 			<key>name</key>
 			<string>entity.name.tag.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>\G(?&lt;=\{)</string>
+					<key>end</key>
+					<string>(?=\})</string>
+					<key>name</key>
+					<string>entity.name.tag.jade</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>{</string>
+							<key>name</key>
+							<string>invalid.illegal.tag.jade</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>source.js</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
 		</dict>
 		<key>tag_text</key>
 		<dict>
@@ -693,11 +1176,41 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#embedded_html</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#html_entity</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#interpolated_value</string>
+				</dict>
+			</array>
+		</dict>
+		<key>unbuffered_code</key>
+		<dict>
+			<key>begin</key>
+			<string>(-|(([a-zA-Z0-9_]+)\s+=))</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.javascript.embedded.jade</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>name = function() {}</string>
+			<key>end</key>
+			<string>$</string>
+			<key>name</key>
+			<string>javascript.embedded.jade</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
 				</dict>
 			</array>
 		</dict>

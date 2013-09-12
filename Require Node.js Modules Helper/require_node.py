@@ -1,3 +1,4 @@
+import sublime
 import sublime_plugin
 import os
 from subprocess import Popen, PIPE
@@ -9,6 +10,20 @@ import string
 class RequireNodeCommand(sublime_plugin.TextCommand):
 
     def write_require(self, resolvers, edit):
+
+        current_lang = self.view.scope_name(self.view.sel()[0].a).split(' ')[0]
+
+        clause_formats = {
+            "source.js": {
+                True:  "var {0} = require({1});",
+                False: "require({1})"
+            },
+            "source.coffee": {
+                True:  "{0} = require {1}",
+                False: "require {1}"
+            }
+        }
+
         def write(index):
             if index == -1:
                 return
@@ -18,11 +33,19 @@ class RequireNodeCommand(sublime_plugin.TextCommand):
                 upperWords = [string.capitalize(word) for word in module_candidate_name.split("-")[1::]]
                 module_candidate_name = string.join(module_candidate_name.split("-")[0:1] + upperWords, "")
 
-            require_directive = "%s = require(\"%s\")" % (module_candidate_name, module_rel_path)
-            region = self.view.sel()[0]
-            # self.view.sel().clear()
-            self.view.insert(edit, region.a, require_directive)
-            # self.view.sel().add(sublime.Region(region.a, region.a + len(module_candidate_name)))
+            region_to_insert = self.view.sel()[0]
+
+            line_is_empty = self.view.lines(region_to_insert)[0].empty()
+
+            require_directive = clause_formats[current_lang][line_is_empty].format(module_candidate_name, get_path(module_rel_path))
+
+            self.view.insert(edit, region_to_insert.a, require_directive)
+
+        def get_path(path):
+            settings = sublime.load_settings(__name__ + '.sublime-settings')
+            quotes_type = settings.get('quotes_type')
+            quote = "\"" if quotes_type == "double" else "'"
+            return quote + path + quote
 
         return write
 
@@ -60,7 +83,7 @@ class RequireNodeCommand(sublime_plugin.TextCommand):
             f = tempfile()
             f.write('console.log(Object.keys(process.binding("natives")))')
             f.seek(0)
-            jsresult = (Popen(['node'], stdout=PIPE, stdin=f)).stdout.read().replace("'", '"')
+            jsresult = (Popen(['node'], stdout=PIPE, stdin=f, shell=True)).stdout.read().replace("'", '"')
             f.close()
 
             results = json.loads(jsresult)
@@ -80,8 +103,10 @@ class RequireNodeCommand(sublime_plugin.TextCommand):
         for root, subFolders, files in os.walk(folder, followlinks=True):
             if root.startswith(os.path.join(folder, "node_modules")):
                 continue
+            if root.startswith(os.path.join(folder, ".git")):
+                continue
             for file in files:
-                if file == "index.js":
+                if file == "index.js" or file == "index.coffee":
                     resolvers.append(self.resolve_from_file(root))
                     suggestions.append([os.path.split(root)[1], root])
                     continue
@@ -97,5 +122,6 @@ class RequireNodeCommand(sublime_plugin.TextCommand):
         [resolvers_from_native, suggestions_from_nm] = self.get_suggestion_native_modules()
         resolvers += resolvers_from_native
         suggestions += suggestions_from_nm
+
 
         self.view.window().show_quick_panel(suggestions, self.write_require(resolvers, edit))

@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[<!DOCTYPE html>
+	<html>
+	<head>
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<title>$1</title>
+			<link rel="stylesheet" href="$2">
+	</head>
+	<body>
+		$0
+	</body>
+</html>]]></content>
+	<tabTrigger>html5</tabTrigger>
+	<scope>source.php,text.html</scope>
+	<description>Simple HTML5 Boilerplate</description>
+</snippet>

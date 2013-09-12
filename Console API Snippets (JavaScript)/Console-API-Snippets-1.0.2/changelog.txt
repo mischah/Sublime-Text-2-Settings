@@ -1,0 +1,14 @@
+CHANGELOG
+---------
+
+Version 1.0 (10-10-2012)
+- Initial release
+
+Version 1.0.1 (10-22-2012)
+- Add CoffeeScript support
+
+Version 1.0.2 (11-22-2012)
+- Fix typo in readme and github pages
+- Add screencast »Become a Javascript Console Power-User« to readme and github pages
+
+See http://mischah.github.com/Console-API-Snippets for details.

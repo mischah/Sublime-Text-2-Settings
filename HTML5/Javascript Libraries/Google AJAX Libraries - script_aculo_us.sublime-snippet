@@ -2,5 +2,5 @@
 	<content><![CDATA[<script src="https://ajax.googleapis.com/ajax/libs/scriptaculous/${1:1.9.0}/scriptaculous.js"></script>$0]]></content>
 	<tabTrigger>ajax</tabTrigger>
 	<description>Google AJAX Libraries: Scriptaculous</description>
-	<scope>text.html</scope>
+	<scope>source.php,text.html</scope>
 </snippet>

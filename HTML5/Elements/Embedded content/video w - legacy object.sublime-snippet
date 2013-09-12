@@ -1,6 +1,5 @@
 <snippet>
-	<content><![CDATA[
-<video${1:${2: autobuffer}${3: autoloop}${4: loop}${5: controls}}>
+	<content><![CDATA[<video${1:${2: autobuffer}${3: autoloop}${4: loop}${5: controls}}>
 	<source src="${6:/media/video.oga}"${TM_POLYGLOT}>
 	<source src="${7:/media/video.m4v}"${TM_POLYGLOT}>
 	<object type="video/ogg" data="$6" width="${8:320}" height="${9:240}">
@@ -11,6 +10,6 @@
 	</object>
 </video>$0]]></content>
 	<tabTrigger>video</tabTrigger>
+	<scope>source.php,text.html</scope>
 	<description>&lt;video&gt; with legacy object</description>
-	<scope>text.html</scope>
 </snippet>

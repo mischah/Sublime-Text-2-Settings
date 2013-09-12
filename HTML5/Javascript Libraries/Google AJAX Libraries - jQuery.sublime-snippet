@@ -2,5 +2,5 @@
 	<content><![CDATA[<script src="https://ajax.googleapis.com/ajax/libs/jquery/${1:1.6.2}/jquery.min.js"></script>$0]]></content>
 	<tabTrigger>ajax</tabTrigger>
 	<description>Google AJAX Libraries: jQuery</description>
-	<scope>text.html</scope>
+	<scope>source.php,text.html</scope>
 </snippet>

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+console.time('${1:Timer Title}');
+	${2:// The code you like to measure}
+console.timeEnd('${3:Timer Title}');
+]]></content>
+	<tabTrigger>console</tabTrigger>
+	<description>console.time()</description>
+	<scope>source.js, source.coffee</scope>
+</snippet>

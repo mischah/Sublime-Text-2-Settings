@@ -10,6 +10,7 @@
 
 	"confirm_before_deleting" : true,
 
+	"new_files_relative_to_project_root": false,
 
 	"disabled_menuitem_edit":               false,
 	"disabled_menuitem_open_run":           false,
@@ -18,8 +19,14 @@
 	"disabled_menuitem_find_in_project":		false,
 	"disabled_menuitem_copy_name":          false,
 	"disabled_menuitem_copy_path":          false,
+	"disabled_menuitem_copy_dir_path":      true,
 	"disabled_menuitem_paste_in_parent":    false,
+	"disabled_menuitem_empty":    					true,
 
 	//if installed in a default location maybe this works.
-	"default_browser": "firefox" //one of this list: firefox, chrome, chromium, opera, safari
+	"default_browser": "chrome", //one of this list: firefox, chrome, chromium, opera, safari
+
+	"portable_browser": "" // for example:  C:/Program Files (x86)/Nightly/firefox.exe
+
+
 }

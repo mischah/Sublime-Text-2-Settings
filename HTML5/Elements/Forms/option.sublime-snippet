@@ -2,6 +2,6 @@
 	<content><![CDATA[<option${1: value="$2"}>$3</option>}
 option$0]]></content>
 	<tabTrigger>option</tabTrigger>
+	<scope>source.php,text.html</scope>
 	<description>&lt;option&gt;</description>
-	<scope>text.html</scope>
 </snippet>

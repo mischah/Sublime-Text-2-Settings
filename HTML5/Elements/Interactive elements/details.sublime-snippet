@@ -4,6 +4,6 @@
 	$2
 </details>$0]]></content>
 	<tabTrigger>details</tabTrigger>
+	<scope>source.php,text.html</scope>
 	<description>&lt;details&gt;</description>
-	<scope>text.html</scope>
 </snippet>

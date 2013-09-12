@@ -29,3 +29,8 @@ Or similarly, on OS X:
     
     Expand Selection to Function (JavaScript)   ⌥↑ (Option+Up)
     Restore Last Selection                      ⌥↓ (Option+Up)
+
+Compatibility
+-------------
+
+Compatible with both Sublime Text 2 and Sublime Text 3 (as of beta build 3019).

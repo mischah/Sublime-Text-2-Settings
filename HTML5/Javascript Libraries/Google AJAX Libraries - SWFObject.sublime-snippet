@@ -2,5 +2,5 @@
 	<content><![CDATA[<script src="https://ajax.googleapis.com/ajax/libs/swfobject/${1:2.2}/swfobject.js"></script>$0]]></content>
 	<tabTrigger>ajax</tabTrigger>
 	<description>Google AJAX Libraries: SWFObject</description>
-	<scope>text.html</scope>
+	<scope>source.php,text.html</scope>
 </snippet>

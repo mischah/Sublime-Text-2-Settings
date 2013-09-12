@@ -488,6 +488,12 @@
         "shadow_color": [0, 0, 0],
         "shadow_offset": [0, -1]
     },
+    // Sidebar heading selected
+    {
+        "class": "sidebar_heading",
+        "parents": [{"class": "tree_row", "attributes": ["selected"]}],
+        "shadow_offset": [0, 1]
+    },
     // Sidebar entry
     {
         "class": "sidebar_label",
@@ -591,6 +597,24 @@
         "parents": [{"class": "tree_row", "attributes": ["selected"]}],
         "layer0.texture": "Theme - Soda/Soda Dark/group-closed-selected.png"
     },
+    // Sidebar folder closed
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "layer0.texture": "Theme - Soda/Soda Dark/folder-closed.png"
+    },
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "parents": [{"class": "tree_row", "attributes": ["hover"]}],
+        "layer0.texture": "Theme - Soda/Soda Dark/folder-closed-hover.png"
+    },
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "parents": [{"class": "tree_row", "attributes": ["selected"]}],
+        "layer0.texture": "Theme - Soda/Soda Dark/folder-closed-selected.png"
+    },
     // Sidebar group open
     {
         "class": "disclosure_button_control",
@@ -608,6 +632,27 @@
         "attributes": ["expanded"],
         "parents": [{"class": "tree_row", "attributes": ["selected"]}],
         "layer0.texture": "Theme - Soda/Soda Dark/group-open-selected.png"
+    },
+    // Sidebar folder open
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "attributes": ["expanded"],
+        "layer0.texture": "Theme - Soda/Soda Dark/folder-open.png"
+    },
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "attributes": ["expanded"],
+        "parents": [{"class": "tree_row", "attributes": ["hover"]}],
+        "layer0.texture": "Theme - Soda/Soda Dark/folder-open-hover.png"
+    },
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "attributes": ["expanded"],
+        "parents": [{"class": "tree_row", "attributes": ["selected"]}],
+        "layer0.texture": "Theme - Soda/Soda Dark/folder-open-selected.png"
     },
 
 //
@@ -658,6 +703,7 @@
     // Quick panel background
     {
         "class": "overlay_control",
+        "settings": ["!soda_retina_fix"],
         "layer0.texture": "Theme - Soda/Soda Dark/quick-panel-background.png",
         "layer0.inner_margin": [12, 6, 12, 15],
         "layer0.opacity": 1.0,
@@ -665,6 +711,14 @@
         "layer1.inner_margin": [12, 40, 12, 19],
         "layer1.opacity": 1.0,
         "content_margin": [11, 8, 11, 17]
+    },
+    // Quick panel background (Retina fix)
+    {
+        "class": "overlay_control",
+        "settings": ["soda_retina_fix"],
+        "layer0.tint": [67, 67, 67],
+        "layer0.opacity": 1.0,
+        "content_margin": [6, 8, 6, 6]
     },
 
 //
@@ -693,26 +747,20 @@
         "class": "quick_panel_label",
         "fg": [210, 210, 210, 255],
         "match_fg": [126, 199, 239, 255],
-        "bg": [41, 41, 41, 255],
         "selected_fg": [255, 255, 255, 255],
-        "selected_match_fg": [166, 229, 255, 255],
-        "selected_bg": [24, 24, 24, 255]
+        "selected_match_fg": [166, 229, 255, 255]
     },
     {
         "class": "quick_panel_path_label",
         "fg": [130, 130, 130, 255],
         "match_fg": [220, 220, 220, 255],
-        "bg": [41, 41, 41, 255],
         "selected_fg": [175, 175, 175, 255],
-        "selected_match_fg": [220, 220, 220, 255],
-        "selected_bg": [24, 24, 24, 255]
+        "selected_match_fg": [220, 220, 220, 255]
     },
     {
         "class": "quick_panel_score_label",
         "fg": [126, 199, 239, 255],
-        "bg": [41, 41, 41, 255],
-        "selected_fg": [166, 229, 255, 255],
-        "selected_bg": [24, 24, 24, 255]
+        "selected_fg": [166, 229, 255, 255]
     },
 
 //

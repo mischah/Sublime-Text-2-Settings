@@ -7,6 +7,6 @@
 	<script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->]]></content>
 	<description>Google AJAX Libraries: Chrome Frame</description>
-	<scope>text.html</scope>
+	<scope>source.php,text.html</scope>
 	<tabTrigger>ajax</tabTrigger>
 </snippet>

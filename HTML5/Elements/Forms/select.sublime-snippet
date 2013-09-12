@@ -4,6 +4,6 @@
 	option$9
 </select>$0]]></content>
 	<tabTrigger>select</tabTrigger>
+	<scope>source.php,text.html</scope>
 	<description>&lt;select&gt;</description>
-	<scope>text.html</scope>
 </snippet>

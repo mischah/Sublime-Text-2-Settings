@@ -2,5 +2,5 @@
 	<content><![CDATA[<!--[if IE]>$1<![endif]-->]]></content>
 	<tabTrigger>!</tabTrigger>
 	<description>IE Conditional Comment: IE</description>
-	<scope>text.html</scope>
+	<scope>source.php,text.html</scope>
 </snippet>

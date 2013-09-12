@@ -16,7 +16,13 @@ class Object():
 
 def expand_vars(path):
 	for k, v in os.environ.iteritems():
-		path = path.replace('%'+k+'%', v).replace('%'+k.lower()+'%', v)
+		try:
+			# dirty hack, this should be autofixed in python3
+			k = unicode(k.encode('utf8'))
+			v = unicode(v.encode('utf8'))
+			path = path.replace(u'%'+k+'%', v).replace(u'%'+k.lower()+'%', v)
+		except:
+			pass
 	return path
 
 class SideBarItem:
@@ -54,7 +60,7 @@ class SideBarItem:
 	def projectURL(self, type):
 		filename = os.path.normpath(os.path.join(sublime.packages_path(), '..', 'Settings', 'SideBarEnhancements.json'))
 		if os.path.lexists(filename):
-			try:
+			#try:
 				import json
 				data = file(filename, 'r').read()
 				data = data.replace('\t', ' ').replace('\\', '/').replace('\\', '/').replace('//', '/').replace('//', '/').replace('http:/', 'http://').replace('https:/', 'https://')
@@ -62,14 +68,26 @@ class SideBarItem:
 
 				for path in data.keys():
 					path2 = expand_vars(path)
-					if self.path().replace('\\', '/').replace('\\', '/').replace('//', '/').replace('//', '/').find(path2.replace('\\', '/').replace('\\', '/').replace('//', '/').replace('//', '/')) == 0:
+					print '-------------------------------------------------------'
+					print 'searching:'
+					path2 = path2.replace('\\', '/').replace('\\', '/').replace('//', '/').replace('//', '/')
+					print path2
+					print 'in:'
+					path3 = self.path().replace('\\', '/').replace('\\', '/').replace('//', '/').replace('//', '/')
+					print path3
+					print '-------------------------------------------------------'
+					path4 = re.sub(re.compile("^"+re.escape(path2), re.IGNORECASE), '', path3);
+					print path4
+					if path4 != path3:
 						url = data[path][type]
 						if url:
 							if url[-1:] != '/':
 								url = url+'/'
-						return url;
-			except:
-				return False
+						import urllib
+						return url+(re.sub("^/", '', urllib.quote(path4.encode('utf-8'))));
+
+			#except:
+			#	return False
 		else:
 			return False
 
@@ -174,7 +192,7 @@ class SideBarItem:
 	def open(self):
 		if sublime.platform() == 'osx':
 			import subprocess
-			subprocess.Popen(['open', '-a', self.nameSystem()], cwd=self.dirnameSystem())
+			subprocess.Popen(['open', self.nameSystem()], cwd=self.dirnameSystem())
 		elif sublime.platform() == 'windows':
 			import subprocess
 			subprocess.Popen([self.nameSystem()], cwd=self.dirnameSystem(), shell=True)

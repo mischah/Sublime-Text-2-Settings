@@ -487,6 +487,13 @@
         "shadow_color": [249, 250, 252],
         "shadow_offset": [0, 1]
     },
+    // Sidebar heading selected
+    {
+        "class": "sidebar_heading",
+        "parents": [{"class": "tree_row", "attributes": ["selected"]}],
+        "color": [255, 255, 255],
+        "shadow_color": [34, 94, 145]
+    },
     // Sidebar entry
     {
         "class": "sidebar_label",
@@ -597,6 +604,24 @@
         "parents": [{"class": "tree_row", "attributes": ["selected"]}],
         "layer0.texture": "Theme - Soda/Soda Light/group-closed-selected.png"
     },
+    // Sidebar folder closed
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "layer0.texture": "Theme - Soda/Soda Light/folder-closed.png"
+    },
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "parents": [{"class": "tree_row", "attributes": ["hover"]}],
+        "layer0.texture": "Theme - Soda/Soda Light/folder-closed-hover.png"
+    },
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "parents": [{"class": "tree_row", "attributes": ["selected"]}],
+        "layer0.texture": "Theme - Soda/Soda Light/folder-closed-selected.png"
+    },
     // Sidebar group open
     {
         "class": "disclosure_button_control",
@@ -614,6 +639,27 @@
         "attributes": ["expanded"],
         "parents": [{"class": "tree_row", "attributes": ["selected"]}],
         "layer0.texture": "Theme - Soda/Soda Light/group-open-selected.png"
+    },
+    // Sidebar folder open
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "attributes": ["expanded"],
+        "layer0.texture": "Theme - Soda/Soda Light/folder-open.png"
+    },
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "attributes": ["expanded"],
+        "parents": [{"class": "tree_row", "attributes": ["hover"]}],
+        "layer0.texture": "Theme - Soda/Soda Light/folder-open-hover.png"
+    },
+    {
+        "class": "disclosure_button_control",
+        "settings": ["soda_folder_icons"],
+        "attributes": ["expanded"],
+        "parents": [{"class": "tree_row", "attributes": ["selected"]}],
+        "layer0.texture": "Theme - Soda/Soda Light/folder-open-selected.png"
     },
 
 //
@@ -664,6 +710,7 @@
     // Quick panel background
     {
         "class": "overlay_control",
+        "settings": ["!soda_retina_fix"],
         "layer0.texture": "Theme - Soda/Soda Light/quick-panel-background.png",
         "layer0.inner_margin": [12, 6, 12, 15],
         "layer0.opacity": 1.0,
@@ -671,6 +718,14 @@
         "layer1.inner_margin": [12, 40, 12, 19],
         "layer1.opacity": 1.0,
         "content_margin": [11, 8, 11, 17]
+    },
+    // Quick panel background (Retina fix)
+    {
+        "class": "overlay_control",
+        "settings": ["soda_retina_fix"],
+        "layer0.tint": [238, 238, 238],
+        "layer0.opacity": 1.0,
+        "content_margin": [6, 8, 6, 6]
     },
 
 //
@@ -698,26 +753,20 @@
         "class": "quick_panel_label",
         "fg": [50, 50, 50, 255],
         "match_fg": [0, 0, 0, 255],
-        "bg": [245, 245, 245, 255],
         "selected_fg": [25, 25, 25, 255],
-        "selected_match_fg": [0, 0, 0, 255],
-        "selected_bg": [225, 225, 225, 255]
+        "selected_match_fg": [0, 0, 0, 255]
     },
     {
         "class": "quick_panel_path_label",
         "fg": [150, 150, 150, 255],
         "match_fg": [90, 90, 90, 255],
-        "bg": [245, 245, 245, 255],
         "selected_fg": [120, 120, 120, 255],
-        "selected_match_fg": [90, 90, 90, 255],
-        "selected_bg": [225, 225, 225, 255]
+        "selected_match_fg": [90, 90, 90, 255]
     },
     {
         "class": "quick_panel_score_label",
         "fg": [72, 139, 211, 255],
-        "bg": [245, 245, 245, 255],
-        "selected_fg": [72, 139, 211, 255],
-        "selected_bg": [225, 225, 225, 255]
+        "selected_fg": [72, 139, 211, 255]
     },
 
 //

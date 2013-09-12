@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+console.dirxml(${1:node});
+]]></content>
+	<tabTrigger>console</tabTrigger>
+	<description>console.dirxml()</description>
+	<scope>source.js, source.coffee</scope>
+</snippet>

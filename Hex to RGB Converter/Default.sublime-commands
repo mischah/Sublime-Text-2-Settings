@@ -1,0 +1,3 @@
+[
+    { "caption": "Convert HEX to RGB", "command": "hex_to_rgb" }
+]

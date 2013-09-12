@@ -3,5 +3,6 @@
 	head$1
 	body$2
 </html>$0]]></content>
+<scope>source.php,text.html</scope>
 	<tabTrigger>html</tabTrigger>
 </snippet>
