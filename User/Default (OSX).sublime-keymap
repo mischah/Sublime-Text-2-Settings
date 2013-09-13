@@ -33,5 +33,6 @@
 	{"keys": ["super+shift+r"], "command": "reindent" , "args": {"single_line": false}},
 	{"keys": ["super+shift+a"], "command": "alignment" },
 	{"keys": ["ctrl+alt+b"], "command": "js_format"},
-	{ "keys": ["super+shift+r"], "command": "require_node" }
+	{ "keys": ["super+shift+r"], "command": "require_node" },
+	{ "keys": ["super+shift+h"], "command": "code_formatter" }
 ]
