@@ -1,0 +1,20 @@
+{
+    "schema_version": "2.0",
+    "packages": [
+        {
+            "name": "MacTerminal",
+            "description": "Open terminal/iterm 2 on current file folder (new tab and ST2/ST3 support)",
+            "author": "Rafał 'afterdesign' Malinowski",
+            "homepage": "https://github.com/afterdesign/MacTerminal",
+            "labels": ["terminal"],
+            "readme": "https://raw.github.com/afterdesign/MacTerminal/master/README.md",
+            "releases" : [
+                {
+                    "platforms": ["osx", "osx-x64"],
+                    "details": "https://github.com/afterdesign/MacTerminal/tags",
+                    "date": "2013-11-28 20:49:00"
+                }
+            ]
+        }
+    ]
+}
