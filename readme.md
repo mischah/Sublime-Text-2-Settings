@@ -1,3 +1,4 @@
 #My Sublime Text 2 Settings and installed packages
 
-Used to »sync« these stuff between work and home …
+**Abandoned**  
+My new employer let me use Dropbox to sync stuff like this :sunglasses:
